@@ -28,7 +28,7 @@ const UploadPhoto = () => {
     <View style={styles.photo}>
         <TouchableOpacity onPress={pickImage} style={styles.photoBox}>
           {userData.userPhoto? 
-            <Image source={{ uri : userData.userPhoto }} style={{width: 140, height: 140, borderRadius: 120}} />
+            <Image source={{ uri : userData.userPhoto }} style={{width: 138, height: 138, borderRadius: 120}} />
             :
             <Image source={userPhoto} style={{width: 60, height: 60}} />
             }
@@ -46,8 +46,8 @@ const styles = StyleSheet.create({
     marginVertical: 10
   },
   photoBox: {
-    backgroundColor: '#ebebeb',
-    borderWidth: 9,
+    backgroundColor: '#700100',
+    borderWidth: 5,
     borderColor: '#cc0101',
     borderRadius: 120,
     width: 150,

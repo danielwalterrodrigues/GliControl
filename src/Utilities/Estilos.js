@@ -6,7 +6,8 @@ export const estilos = StyleSheet.create({
     container: {
         alignItems: 'center',
         width: windowWidth,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        paddingTop: 30
     },
     input: {
         borderWidth: 2,

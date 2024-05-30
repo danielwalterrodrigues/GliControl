@@ -28,9 +28,10 @@ export default function App() {
       <SystemProfile.Provider value={[systemData, setSystemData]}>
         <UserProfile.Provider value={[userData, setUserData]}>
           <StatusBar style="auto" />
-            <AutoHeightImage source={bg} width={windowWidth} style={styles.image} />
+            <ImageBackground source={bg} resizeMethod='auto' resizeMode='stretch' style={styles.image}>
               <AppRoutes />
               <Modal />
+            </ImageBackground>
         </UserProfile.Provider>
       </SystemProfile.Provider>
     </NavigationContainer>
@@ -53,6 +54,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     zIndex: 1,
     left: 0,
-    top: -30
+    top: -30,
+    width: windowWidth,
+    height: windowHeight+80
   }
 });
