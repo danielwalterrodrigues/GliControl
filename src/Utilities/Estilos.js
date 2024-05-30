@@ -3,6 +3,11 @@ import { Platform, StyleSheet } from "react-native";
 import { windowHeight, windowWidth } from "./Dimensions";
 
 export const estilos = StyleSheet.create({
+    container: {
+        alignItems: 'center',
+        width: windowWidth,
+        paddingHorizontal: 20
+    },
     input: {
         borderWidth: 2,
         color: '#000000',
@@ -29,7 +34,7 @@ export const estilos = StyleSheet.create({
     },
     botaoOff: {
         borderWidth: 2,
-        borderColor: '#f9750033',
+        borderColor: '#cc010133',
         borderRadius: 9,
         paddingHorizontal: 15,
         paddingVertical: 10,

@@ -47,11 +47,11 @@ const styles = StyleSheet.create({
   },
   photoBox: {
     backgroundColor: '#ebebeb',
-    borderWidth: 5,
+    borderWidth: 9,
     borderColor: '#cc0101',
     borderRadius: 120,
-    width: 146,
-    height: 146,
+    width: 150,
+    height: 150,
     alignItems: 'center',
     justifyContent: 'center',
   }
