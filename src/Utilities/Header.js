@@ -18,6 +18,12 @@ const Header = () => {
     const [showMenu, setShowMenu] = useState(false)
     const navigation = useNavigation()
 
+    function CleanData() {
+      setUserData([])
+      setShowMenu(false)
+      navigation.navigate('Home')
+    }
+
   return (
     <View style={styles.header}>
       <View>
@@ -48,11 +54,8 @@ const Header = () => {
             <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Register')}}>
               <CustomText style={{color: '#ffffff'}}>Criar um novo registro</CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Reports')}}>
-              <CustomText style={{color: '#ffffff'}}>Relatórios</CustomText>
-            </TouchableOpacity>
             <View style={{marginTop: 40}}>
-              <TouchableOpacity style={[estilos.botaoOff, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Home')}}>
+              <TouchableOpacity style={[estilos.botaoOff, styles.botao]} onPress={()=>{CleanData()}}>
                 <CustomText style={{color: '#ffffff85'}}>Limpar dados</CustomText>
               </TouchableOpacity>
             </View>

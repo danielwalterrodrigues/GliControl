@@ -22,6 +22,7 @@ const Start = () => {
     function Login() {
         if(name){
         setUserData({...userData, name: name})
+        setName()
         navigation.navigate('Dashboard')
         setSystemData({...systemData, erro: 'Bem vindo(a)', erroType: 'success', erroMsg: 'Aproveite uma nova jornada no controle da sua diabetes.'})
         } else {

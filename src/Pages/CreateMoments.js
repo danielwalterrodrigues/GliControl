@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native'
 import Header from '../Utilities/Header'
 import CustomText from '../Utilities/CustomText'
 import React, { useContext, useState, useEffect } from 'react'
@@ -7,6 +7,8 @@ import UserProfile from '../Contexts/UserContext'
 import SystemProfile from '../Contexts/SystemContext'
 import { windowWidth } from '../Utilities/Dimensions'
 import { useNavigation } from '@react-navigation/native'
+import novoRegistroIco from '../assets/novoRegistro.png'
+import AutoHeightImage from 'react-native-auto-height-image'
 
 const CreateMoments = () => {
     const navigation = useNavigation()
@@ -45,12 +47,13 @@ const CreateMoments = () => {
     }, [])
 
   return (
+    
     <View style={estilos.container}>
+        
         <Header />
         <CustomText style={estilos.title}>Meus momentos de registro</CustomText>
-        <CustomText style={[estilos.texto, {marginVertical: 30
-        }]}>Você pode nomear e agrupar vários momentos ao dia para agrupar os seus registros. Isto ajudará a montar relatórios mais precisos sobre as suas medições glicêmicas.</CustomText>
-        <CustomText style={[estilos.texto, {color: '#cc0000', marginTop: 0}]}>Exemplo: "Após o almoço"</CustomText>
+        <CustomText style={[estilos.texto, {marginVertical: 20
+        }]}>Você pode nomear momentos do dia para os seus registros. Isto ajudará a organizar as suas medições glicêmicas.</CustomText>
         <TextInput
             color={'#000000'}
             fontSize={15}
@@ -58,7 +61,7 @@ const CreateMoments = () => {
             onChangeText={newName => setMomentName(newName)}
             //onEndEditing={() => setShowLogin(true)}
             style={estilos.input}
-            placeholder="Crie um nome"
+            placeholder="Nome. Ex: Depois do almoço"
             placeholderTextColor="#000000"
             />
         <TouchableOpacity style={estilos.botao} onPress={()=>{AddMoment()}}>
@@ -78,6 +81,12 @@ const CreateMoments = () => {
                 </View>
             ))}
         </View>
+    
+        <TouchableOpacity onPress={()=>{navigation.navigate('Register')}} style={[estilos.botao, styles.novoRegistroBt]}>
+            <AutoHeightImage source={novoRegistroIco} width={30} />
+            <CustomText style={{color: '#ffffff', fontSize: 20}}>criar um novo registro</CustomText>
+        </TouchableOpacity>
+    
     </View>
   )
 }
@@ -104,5 +113,16 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
+    },
+    novoRegistroBt: {
+        backgroundColor: '#006808', 
+        borderColor: '#005106',
+        paddingTop: 15,
+        paddingBottom: 20,
+        marginTop: 30, 
+        borderRadius: 18,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-around',
     }
 })
