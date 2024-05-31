@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, ImageBackground, Image } from 'react-native';
 import { useFonts, Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold } from '@expo-google-fonts/quicksand';
@@ -12,8 +12,8 @@ import { windowHeight, windowWidth } from './src/Utilities/Dimensions';
 import Modal from './src/Utilities/Modal';
 import AppRoutes from './src/Pages/AppRoutes';
 import CustomText from './src/Utilities/CustomText';
-
-
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
+import ToastAll from './src/Utilities/Toast';
 
 export default function App() {
   const [userData, setUserData] = useState([])
@@ -23,17 +23,23 @@ export default function App() {
     Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold
   });
 
+  if (!fontsLoaded) {
+    return null;
+  }
+
   return (
     <NavigationContainer>
+      <AlertNotificationRoot theme='dark'>
       <SystemProfile.Provider value={[systemData, setSystemData]}>
         <UserProfile.Provider value={[userData, setUserData]}>
-          <StatusBar style="auto" />
             <ImageBackground source={bg} resizeMethod='auto' resizeMode='stretch' style={styles.image}>
               <AppRoutes />
               <Modal />
+              <ToastAll />
             </ImageBackground>
         </UserProfile.Provider>
       </SystemProfile.Provider>
+      </AlertNotificationRoot>
     </NavigationContainer>
     
   );
@@ -51,10 +57,6 @@ const styles = StyleSheet.create({
     paddingTop: 30
   },
   image: {
-    position: 'absolute',
-    zIndex: 1,
-    left: 0,
-    top: -30,
     width: windowWidth,
     height: windowHeight+80
   }

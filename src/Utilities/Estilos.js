@@ -18,7 +18,7 @@ export const estilos = StyleSheet.create({
         paddingVertical: 10,
         backgroundColor: '#ffffff',
         marginVertical: 5,
-        width: 310,
+        width: windowWidth-80,
         fontFamily: 'Quicksand_400Regular'
     },
     botao: {
@@ -29,7 +29,7 @@ export const estilos = StyleSheet.create({
         paddingVertical: 10,
         backgroundColor: '#7c0000',
         marginVertical: 5,
-        width: 310,
+        width: windowWidth-80,
         fontFamily: 'Quicksand_600SemiBold',
         alignItems: 'center'
     },
@@ -41,8 +41,20 @@ export const estilos = StyleSheet.create({
         paddingVertical: 10,
         backgroundColor: '#f97500A633',
         marginVertical: 5,
-        width: 310,
         fontFamily: 'Quicksand_600SemiBold',
         alignItems: 'center'
+    },
+    title: {
+        fontSize: 25,
+        textAlign: 'center',
+        width: 250,
+        marginTop: 30
+    },
+    texto: {
+        fontSize: 14,
+        color: '#7f7e7e',
+        alignItems: 'flex-start',
+        width: 350
+
     }
 })

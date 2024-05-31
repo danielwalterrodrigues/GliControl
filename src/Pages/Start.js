@@ -1,23 +1,32 @@
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native'
+import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform, Button } from 'react-native'
 import { useNavigation } from "@react-navigation/native";
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import logo from '../assets/logo.png'
 import CustomText from '../Utilities/CustomText'
 import UploadPhoto from '../Utilities/UploadPhoto'
 import { estilos } from '../Utilities/Estilos'
 import { windowHeight } from '../Utilities/Dimensions'
 import UserProfile from '../Contexts/UserContext';
+import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
+import Erro from '../Utilities/Erro';
+import SystemProfile from '../Contexts/SystemContext';
 
 
 const Start = () => {
     const [ name, setName] = useState()
     const [userData, setUserData] = useContext(UserProfile)
+    const [systemData, setSystemData] = useContext(SystemProfile)
     const [showLogin, setShowLogin] = useState(false)
     const navigation = useNavigation()
-
+      
     function Login() {
+        if(name){
         setUserData({...userData, name: name})
         navigation.navigate('Dashboard')
+        setSystemData({...systemData, erro: 'Bem vindo(a)', erroType: 'success', erroMsg: 'Aproveite uma nova jornada no controle da sua diabetes.'})
+        } else {
+            setSystemData({...systemData, erro: 'AVISO!', erroType: 'danger', erroMsg: 'Preencha ao menos o seu nome.'})
+        }
     }
 
   return (
@@ -50,11 +59,12 @@ const Start = () => {
                     placeholderTextColor="#000000"
                     />
                 
-                <TouchableOpacity style={showLogin ? estilos.botao : estilos.botaoOff} onPress={() => {Login()}}>
+                <TouchableOpacity style={estilos.botao} onPress={() => {Login()}}>
                     <CustomText style={{fontSize: 18, color: '#ffffff'}}>entrar</CustomText>
                 </TouchableOpacity>
             </View>  
         </View>
+        
     </ScrollView>
 </KeyboardAvoidingView>
   
