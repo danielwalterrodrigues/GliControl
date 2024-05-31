@@ -6,7 +6,7 @@ import { estilos } from '../Utilities/Estilos'
 import UserProfile from '../Contexts/UserContext'
 import SystemProfile from '../Contexts/SystemContext'
 import { windowWidth } from '../Utilities/Dimensions'
-import RangeSlider from 'react-native-range-slider'
+import Slider from '@react-native-community/slider'
 
 import { useNavigation } from '@react-navigation/native'
 
@@ -14,11 +14,12 @@ const Register = () => {
     const navigation = useNavigation()
     const [userData, setUserData] = useContext(UserProfile)
     const [systemData, setSystemData] = useContext(SystemProfile)
-    const [mgdL, setMgdL] = useState(80)
+    const [mgdL, setMgdL] = useState(90)
     const [moments, setMoments] = useState(userData?.moments ? userData.moments : [])
     const [register, setRegister] = useState(userData?.register ? userData.register : [])
     const [selected, setSelected] = useState('')
     const [save, setSave] = useState(false)
+
 
     const [momentSelected, setMomentsSelected] = useState(moments?.selected ? moments.selected : [])
     
@@ -74,20 +75,17 @@ const Register = () => {
         <CustomText style={{fontSize: 50, color: '#6d0000', marginVertical: 30}}>{mgdL}</CustomText>
         
         
-            <RangeSlider
-                minValue={0}
-                maxValue={100}
-                tintColor={'#da0f22'}
-                handleBorderWidth={1}
-                handleBorderColor="#454d55"
-                selectedMinimum={20}
-                selectedMaximum={40}
-                style={{ width: windowWidth-100, height: 70, padding: 10, backgroundColor: '#ddd' }}
-                onChange={ (data)=>{ console.log(data);} }
-            />
-        
-
-
+        <Slider
+  style={{width: 300}}
+  minimumValue={80}
+  maximumValue={280}
+  value={mgdL}
+  step={1}
+  thumbTintColor={'#000000'}
+  minimumTrackTintColor="#cc0000"
+  maximumTrackTintColor="#700100"
+  onValueChange={newMgdL => setMgdL(newMgdL)}
+/>
 
         <TouchableOpacity style={[estilos.botao, {marginTop: 80}]} onPress={()=>{SaveRegister(), setSave(true)}}>
             <CustomText style={{color: '#ffffff'}}>salvar registro</CustomText>

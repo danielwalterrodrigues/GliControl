@@ -1485,6 +1485,11 @@
     prompts "^2.4.2"
     semver "^7.5.2"
 
+"@react-native-community/slider@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.5.2.tgz#c3835788dbc1bd83d3778b83ca15533c805db149"
+  integrity sha512-DbFyCyI7rwl0FkBkp0lzEVp+5mNfS5qU/nM2sK2aSguWhj0Odkt1aKHP2iW/ljruOhgS/O4dEixXlne4OdZJDQ==
+
 "@react-native/assets-registry@0.74.83", "@react-native/assets-registry@~0.74.83":
   version "0.74.83"
   resolved "https://registry.yarnpkg.com/@react-native/assets-registry/-/assets-registry-0.74.83.tgz#c1815dc10f9e1075e0d03b4c8a9619145969522e"
@@ -5195,7 +5200,7 @@ prompts@^2.3.2, prompts@^2.4.2:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.5.10, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -5323,13 +5328,6 @@ react-native-mask-text@^0.14.2:
   integrity sha512-WP80f9y4+Kzg+TRmL3Qldp71iu0Sni3pCjyw90JvEM0r274iuWLZd+EylXtP2bYM/C5p1sZWvLstADYocdLGaA==
   dependencies:
     bignumber.js "^9.0.1"
-
-react-native-range-slider@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/react-native-range-slider/-/react-native-range-slider-0.1.2.tgz#f1bc020aa9094340a8ae22c25e22cbcb5af48710"
-  integrity sha512-EZLOtcnhOcOv4yZtPT826jZknqn+h3zbqM08tc3dFbakBFMoK4aN5GAuHP2RJ3PhMtwzl2h6HzOeFilq8cKaXQ==
-  dependencies:
-    prop-types "^15.5.10"
 
 react-native-reanimated@~3.10.1:
   version "3.10.1"
