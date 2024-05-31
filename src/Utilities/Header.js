@@ -54,6 +54,9 @@ const Header = () => {
             <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Register')}}>
               <CustomText style={{color: '#ffffff'}}>Criar um novo registro</CustomText>
             </TouchableOpacity>
+            <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('AllRegistries')}}>
+              <CustomText style={{color: '#ffffff'}}>Todos os registros</CustomText>
+            </TouchableOpacity>
             <View style={{marginTop: 40}}>
               <TouchableOpacity style={[estilos.botaoOff, styles.botao]} onPress={()=>{CleanData()}}>
                 <CustomText style={{color: '#ffffff85'}}>Limpar dados</CustomText>

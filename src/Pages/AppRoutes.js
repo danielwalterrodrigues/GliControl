@@ -4,6 +4,7 @@ import Start from './Start';
 import Dashboard from './Dashboard';
 import CreateMoments from './CreateMoments';
 import Register from './Register';
+import AllRegistries from './AllRegistries';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,7 @@ const AppRoutes = () => {
           <Stack.Screen name="Dashboard" component={Dashboard} options={{headerShown: false, statusBarColor: '#700700', statusBarStyle: 'light'}}  />
           <Stack.Screen name="CreateMoments" component={CreateMoments} options={{headerShown: false, statusBarColor: '#700700', statusBarStyle: 'light'}}  />
           <Stack.Screen name="Register" component={Register} options={{headerShown: false, statusBarColor: '#700700', statusBarStyle: 'light'}}  />
+          <Stack.Screen name="AllRegistries" component={AllRegistries} options={{headerShown: false, statusBarColor: '#700700', statusBarStyle: 'light'}}  />
         </Stack.Navigator>
       
     )
