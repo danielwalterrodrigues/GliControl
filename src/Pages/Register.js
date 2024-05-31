@@ -6,7 +6,8 @@ import { estilos } from '../Utilities/Estilos'
 import UserProfile from '../Contexts/UserContext'
 import SystemProfile from '../Contexts/SystemContext'
 import { windowWidth } from '../Utilities/Dimensions'
-import RNListSlider from 'react-native-list-slider';
+import RangeSlider from 'react-native-range-slider'
+
 import { useNavigation } from '@react-navigation/native'
 
 const Register = () => {
@@ -40,7 +41,7 @@ const Register = () => {
     useEffect(()=>{
         if(save){
             setUserData({...userData, register: register})
-            setSystemData({...systemData, erro: 'Medição registrada com sucesso!', erroType: 'success', erroMsg: mgdL+' mgdL registrados com sucesso em '+selected})
+            setSystemData({...systemData, erro: 'Medição registrada com sucesso!', erroType: 'success', erroMsg: null})
             navigation.navigate('Dashboard')
         }
     }, [save])
@@ -71,20 +72,23 @@ const Register = () => {
         <>
         <CustomText style={{textAlign: 'center'}}>Momento selecionado:{'\n'}<Text style={{color: '#cc0000', fontSize: 20}}>{selected}</Text></CustomText>
         <CustomText style={{fontSize: 50, color: '#6d0000', marginVertical: 30}}>{mgdL}</CustomText>
-        <RNListSlider
-            value={mgdL}
-            onValueChange={mgdL => setMgdL(mgdL)}
-            multiplicity={1}
-            decimalPlaces={3}
-            //arrayLength={180}
-            maximumValue={480}
-            //initialPositionValue={80}
-            tenthItemStyle={{marginBottom: 14, height: 80, borderColor: '#cc0000', color: '#cc0000'}}
-            thumbStyle={{height: 120, marginTop: -20, borderWidth: 1, borderColor: '#cc0000', color: '#cc0000'}}
-            itemStyle={{height: 50, width: 18,borderColor: '#cc0000', color: '#cc0000'}}
-            textColor={'#cc0000'}
-            mainContainerStyle={{width: 355}}
-        />
+        
+        
+            <RangeSlider
+                minValue={0}
+                maxValue={100}
+                tintColor={'#da0f22'}
+                handleBorderWidth={1}
+                handleBorderColor="#454d55"
+                selectedMinimum={20}
+                selectedMaximum={40}
+                style={{ width: windowWidth-100, height: 70, padding: 10, backgroundColor: '#ddd' }}
+                onChange={ (data)=>{ console.log(data);} }
+            />
+        
+
+
+
         <TouchableOpacity style={[estilos.botao, {marginTop: 80}]} onPress={()=>{SaveRegister(), setSave(true)}}>
             <CustomText style={{color: '#ffffff'}}>salvar registro</CustomText>
         </TouchableOpacity>
