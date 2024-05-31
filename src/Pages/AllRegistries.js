@@ -23,6 +23,12 @@ const AllRegistries = () => {
         <Header />
         <CustomText style={estilos.title}>Todos os registros</CustomText>
         <View style={{marginVertical: 20, alignItems: 'flex-start'}}></View>
+        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 40}]}></CustomText>
+                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 150}]}>Data e hora</CustomText>
+                    <CustomText style={[styles.item, {width: 140, borderTopWidth:0}]}>Momento</CustomText>
+                    <CustomText style={[styles.item, {borderTopWidth:0}]}>mg/dL</CustomText>
+                </View>
         {registries ?
             registries.map((reg, index)=>(
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
