@@ -12,7 +12,6 @@ const Erro = () => {
     const erroType = systemData?.type
 
     useEffect(()=>{
-        console.log('erro é: '+erro)
         if(erro != '') {
             setShowErro(true)
         }

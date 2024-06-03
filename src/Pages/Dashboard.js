@@ -1,5 +1,5 @@
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { estilos } from '../Utilities/Estilos'
 import CustomText from '../Utilities/CustomText'
 import Header from '../Utilities/Header'
@@ -19,6 +19,7 @@ const Dashboard = () => {
 
     const myMoments = userData.moments
     const registers = userData?.register
+    
     const reg = (registers?.length)-1
 
   return (

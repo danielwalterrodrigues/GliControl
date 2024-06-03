@@ -6,12 +6,14 @@ import CustomText from './CustomText'
 import UserProfile from '../Contexts/UserContext'
 import AutoHeightImage from 'react-native-auto-height-image'
 import Animated, {FadeIn, FadeOut, SlideInLeft, SlideOutLeft} from 'react-native-reanimated'
+import { MMKV } from 'react-native-mmkv'
 
 import hamburger from '../assets/hamburger.png'
 import back from '../assets/back.png'
 import { estilos } from './Estilos'
 import { useNavigation } from '@react-navigation/native'
 
+const storage = new MMKV()
 
 const Header = () => {
     const [userData, setUserData] = useContext(UserProfile)
@@ -21,6 +23,7 @@ const Header = () => {
     function CleanData() {
       setUserData([])
       setShowMenu(false)
+      storage.delete('@GliControl')
       navigation.navigate('Home')
     }
 

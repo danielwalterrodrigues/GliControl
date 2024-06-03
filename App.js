@@ -19,6 +19,7 @@ export default function App() {
   const [userData, setUserData] = useState([])
   const [systemData, setSystemData] = useState([])
 
+
   let [fontsLoaded] = useFonts({
     Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold
   });

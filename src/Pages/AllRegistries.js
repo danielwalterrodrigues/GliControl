@@ -30,8 +30,8 @@ const AllRegistries = () => {
                     <CustomText style={[styles.item, {borderTopWidth:0}]}>mg/dL</CustomText>
                 </View>
         {registries ?
-            registries.map((reg, index)=>(
-                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
+            registries.reverse().map((reg, index)=>(
+                <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} key={index}>
                     <CustomText style={[styles.item, {borderTopWidth: index === 0 ? 0 : 1}]}>{index+1}</CustomText>
                     <CustomText style={[styles.item, {borderTopWidth: index === 0 ? 0 : 1}]}>{moment(reg.date).format('DD/MM/YY - HH:mm')}</CustomText>
                     <CustomText style={[styles.item, {width: 170, borderTopWidth: index === 0 ? 0 : 1}]}>{reg.moment}</CustomText>
