@@ -7,6 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import bg from './src/assets/bg.png'
 import UserProfile from './src/Contexts/UserContext';
 import SystemProfile from './src/Contexts/SystemContext';
+import LocaleProfile from './src/Contexts/LocaleContext';
 import Erro from './src/Utilities/Erro';
 import { windowHeight, windowWidth } from './src/Utilities/Dimensions';
 import Modal from './src/Utilities/Modal';
@@ -14,11 +15,12 @@ import AppRoutes from './src/Pages/AppRoutes';
 import CustomText from './src/Utilities/CustomText';
 import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 import ToastAll from './src/Utilities/Toast';
+import { ptBr, enUs } from './src/Utilities/Locale';
 
 export default function App() {
   const [userData, setUserData] = useState([])
   const [systemData, setSystemData] = useState([])
-
+  const [locale, setLocale] = useState([])
 
   let [fontsLoaded] = useFonts({
     Quicksand_300Light, Quicksand_400Regular, Quicksand_500Medium, Quicksand_600SemiBold, Quicksand_700Bold
@@ -32,13 +34,15 @@ export default function App() {
     <NavigationContainer>
       <AlertNotificationRoot theme='dark'>
       <SystemProfile.Provider value={[systemData, setSystemData]}>
+      <LocaleProfile.Provider value={[locale, setLocale]}>
         <UserProfile.Provider value={[userData, setUserData]}>
             <ImageBackground source={bg} resizeMethod='auto' resizeMode='stretch' style={styles.image}>
               <AppRoutes />
               <Modal />
               <ToastAll />
             </ImageBackground>
-        </UserProfile.Provider>
+          </UserProfile.Provider>
+        </LocaleProfile.Provider>
       </SystemProfile.Provider>
       </AlertNotificationRoot>
     </NavigationContainer>

@@ -12,18 +12,28 @@ const ToastAll = () => {
     const erro = systemData?.erro
     const erroType = systemData?.erroType
     const msg = systemData?.erroMsg
+    const toast = systemData?.erroBox
 
     console.log('Erromsg: '+erro)
 
     useEffect(()=>{
         if(erro != '' && erro != null && erro != undefined){
-            Toast.show({
-                type: erroType ===  'success' ? ALERT_TYPE.SUCCESS : erroType === 'warning' ? ALERT_TYPE.WARNING : ALERT_TYPE.DANGER,
-                title: erro,
-                autoClose: 3000,
-                textBody: msg,
-            })
-        setSystemData({...systemData, erro: ''})
+            if(toast === 'dialog'){
+                Dialog.show({
+                    type: erroType ===  'success' ? ALERT_TYPE.SUCCESS : erroType === 'warning' ? ALERT_TYPE.WARNING : ALERT_TYPE.DANGER,
+                    title: erro,
+                    autoClose: 1500,
+                    textBody: msg,
+                })
+            } else {
+                Toast.show({
+                    type: erroType ===  'success' ? ALERT_TYPE.SUCCESS : erroType === 'warning' ? ALERT_TYPE.WARNING : ALERT_TYPE.DANGER,
+                    title: erro,
+                    autoClose: 3000,
+                    textBody: msg,
+                })
+            }
+        setSystemData({...systemData, erro: '', erroBox: ''})
         }
     }, [erro])
 

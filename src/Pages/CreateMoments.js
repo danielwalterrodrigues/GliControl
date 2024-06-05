@@ -9,11 +9,13 @@ import { windowWidth } from '../Utilities/Dimensions'
 import { useNavigation } from '@react-navigation/native'
 import novoRegistroIco from '../assets/novoRegistro.png'
 import AutoHeightImage from 'react-native-auto-height-image'
+import LocaleProfile from '../Contexts/LocaleContext'
 
 const CreateMoments = () => {
     const navigation = useNavigation()
     const [userData, setUserData] = useContext(UserProfile)
     const [systemData, setSystemData] = useContext(SystemProfile)
+    const [locale, setLocale] = useContext(LocaleProfile)
     const [moments, setMoments] = useState([])
     const [momentName, setMomentName] = useState()
 
@@ -22,7 +24,7 @@ const CreateMoments = () => {
             setMoments(current => [...current, {moment: momentName}])
             setMomentName()
         } else {
-            setSystemData({...systemData, erro: 'ATENÇÃO!', erroMsg: 'Você precisa dar um nome para cada momento', erroType: 'danger'})
+            setSystemData({...systemData, erro: locale.aviso, erroMsg: locale.erroMomento, erroType: 'danger'})
         }
     }
 
@@ -30,7 +32,7 @@ const CreateMoments = () => {
         setMoments(oldValues => {
             return oldValues.filter((_, i) => i !== index)
           })
-        setSystemData({...systemData, erro: 'Aviso', erroType: 'warning', erroMsg: 'O momento e todos os seus registros foram deletados.'})
+        setSystemData({...systemData, erro: locale.aviso, erroType: 'warning', erroMsg: locale.momentoDeletado})
       }
 
       
@@ -40,7 +42,7 @@ const CreateMoments = () => {
 
     useEffect(()=>{
         if(userData.moments === undefined) {
-            setMoments(current => [...current, {moment: 'Registro Livre'}])
+            setMoments(current => [...current, {moment: locale.registroLivre}])
         } else {
             setMoments(userData.moments)
         }
@@ -51,9 +53,9 @@ const CreateMoments = () => {
     <View style={estilos.container}>
         
         <Header />
-        <CustomText style={estilos.title}>Meus momentos de registro</CustomText>
+        <CustomText style={estilos.title}>{locale.meusMomentosRegistro}</CustomText>
         <CustomText style={[estilos.texto, {marginVertical: 20
-        }]}>Você pode nomear momentos do dia para os seus registros. Isto ajudará a organizar as suas medições glicêmicas.</CustomText>
+        }]}>{locale.momentosExplica}.</CustomText>
         <TextInput
             color={'#000000'}
             fontSize={15}
@@ -61,11 +63,11 @@ const CreateMoments = () => {
             onChangeText={newName => setMomentName(newName)}
             //onEndEditing={() => setShowLogin(true)}
             style={estilos.input}
-            placeholder="Nome. Ex: Depois do almoço"
+            placeholder={locale.MomentoPlaceholder}
             placeholderTextColor="#000000"
             />
         <TouchableOpacity style={estilos.botao} onPress={()=>{AddMoment()}}>
-            <CustomText style={{color: '#ffffff'}}>adicionar</CustomText>
+            <CustomText style={{color: '#ffffff'}}>{locale.adicionar}</CustomText>
         </TouchableOpacity>
         <View style={styles.box}>
             {moments.map((moment, index)=>(
@@ -84,7 +86,7 @@ const CreateMoments = () => {
     
         <TouchableOpacity onPress={()=>{navigation.navigate('Register')}} style={[estilos.botao, styles.novoRegistroBt]}>
             <AutoHeightImage source={novoRegistroIco} width={30} />
-            <CustomText style={{color: '#ffffff', fontSize: 20}}>criar um novo registro</CustomText>
+            <CustomText style={{color: '#ffffff', fontSize: 20}}>{locale.novoRegistro}</CustomText>
         </TouchableOpacity>
     
     </View>

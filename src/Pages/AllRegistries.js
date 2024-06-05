@@ -7,12 +7,14 @@ import UserProfile from '../Contexts/UserContext'
 import SystemProfile from '../Contexts/SystemContext'
 import { windowWidth } from '../Utilities/Dimensions'
 import { useNavigation } from '@react-navigation/native'
+import LocaleProfile from '../Contexts/LocaleContext'
 import moment from 'moment'
 
 const AllRegistries = () => {
     const navigation = useNavigation()
     const [userData, setUserData] = useContext(UserProfile)
     const [systemData, setSystemData] = useContext(SystemProfile)
+    const [locale, setLocale] = useContext(LocaleProfile)
     const registries = userData?.register
     const [border, setBorder] = useState()
 
@@ -21,12 +23,12 @@ const AllRegistries = () => {
     <View style={estilos.container}>
         
         <Header />
-        <CustomText style={estilos.title}>Todos os registros</CustomText>
+        <CustomText style={estilos.title}>{locale.todosRegistros}</CustomText>
         <View style={{marginVertical: 20, alignItems: 'flex-start'}}></View>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
                     <CustomText style={[styles.item, {borderTopWidth: 0, width: 40}]}></CustomText>
-                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 150}]}>Data e hora</CustomText>
-                    <CustomText style={[styles.item, {width: 140, borderTopWidth:0}]}>Momento</CustomText>
+                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 150}]}>{locale.dataehora}</CustomText>
+                    <CustomText style={[styles.item, {width: 140, borderTopWidth:0}]}>{locale.momento}</CustomText>
                     <CustomText style={[styles.item, {borderTopWidth:0}]}>mg/dL</CustomText>
                 </View>
         {registries ?
@@ -41,7 +43,7 @@ const AllRegistries = () => {
         :
             <View style={styles.box}>
                 <CustomText>
-                    Não há medições para apresentar
+                    {locale.nenhumRegistro}
                 </CustomText>
             </View>
         }

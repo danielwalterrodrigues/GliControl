@@ -8,22 +8,34 @@ import AllRegistries from './AllRegistries';
 import { MMKV } from "react-native-mmkv";
 import { useEffect, useContext, useState } from 'react';
 import UserProfile from '../Contexts/UserContext';
-
+import LocaleProfile from '../Contexts/LocaleContext';
+import { ptBr, enUs } from '../Utilities/Locale';
 
 const storage = new MMKV()
 const Stack = createNativeStackNavigator();
 
 const AppRoutes = () => {
   const [userData, setUserData] = useContext(UserProfile)
+  const [locale, setLocale] = useContext(LocaleProfile)
   const storagedUser = storage.getString('@GliControl')
   const [page, setPage] = useState(false)
+  const [language, setLanguage] = useState('')
 
   useEffect(()=>{
     if(storage.contains('@GliControl')){
       const obj = JSON.parse(storagedUser)
       setUserData(obj)
+      setLanguage(obj.locale)
     }
   }, [])
+
+  useEffect(()=>{
+    if(language != ''){
+      setLocale(language === 'ptBr' ? ptBr : enUs)
+    } else {
+      setLocale(enUs)
+    }
+  }, [language])
 
   useEffect(()=>{
     if(userData.name != undefined){
@@ -31,8 +43,7 @@ const AppRoutes = () => {
     }
   }, [userData])
 
-  console.log('User: '+storagedUser)
-
+console.log('userData : '+JSON.stringify(userData))
     return(
       
         <Stack.Navigator initialRouteName={storage.contains('@GliControl') ? 'Dashboard' : 'Home'} screenOptions={{contentStyle: {backgroundColor: 'transparent', headerTransparent: true}}}>

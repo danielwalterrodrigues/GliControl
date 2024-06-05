@@ -11,10 +11,12 @@ import moment from 'moment'
 import meusMomentosIco from '../assets/meusMomentos.png'
 import novoRegistroIco from '../assets/novoRegistro.png'
 import AutoHeightImage from 'react-native-auto-height-image'
+import LocaleProfile from '../Contexts/LocaleContext'
 
 const Dashboard = () => {
     const [userData, setUserData] = useContext(UserProfile)
     const [systemData, setSystemData] = useContext(SystemProfile)
+    const [locale, setLocale] = useContext(LocaleProfile)
     const navigation = useNavigation()
 
     const myMoments = userData.moments
@@ -29,7 +31,7 @@ const Dashboard = () => {
     {registers ?
     <>
         <View style={[styles.ultimaMedicao]}>
-            <CustomText style={[styles.meusMomentosTit, {marginTop: -15, marginHorizontal: 70}]}>última medição</CustomText>
+            <CustomText style={[styles.meusMomentosTit, {marginTop: -15, marginHorizontal: 70}]}>{locale.ultimaMedicao}</CustomText>
         </View>
             <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
             <View style={styles.lastValue}>
@@ -46,33 +48,32 @@ const Dashboard = () => {
     : 
         <View style={[styles.meusMomentos, {marginTop: 30}]}>
             <CustomText style={{textAlign: 'center', color: '#44444491'}}>
-                Nenhum registro de glicemia encontrado.
+                {locale.nenhumRegistro}.
             </CustomText>
         </View>
     }
 
       <TouchableOpacity onPress={()=>{navigation.navigate('CreateMoments')}} style={[estilos.botao, styles.meusMomentosBt]}>
         <AutoHeightImage source={meusMomentosIco} width={30} />
-        <CustomText style={{color: '#ffffff'}}>definir momentos diários</CustomText>
+        <CustomText style={{color: '#ffffff'}}>{locale.momentosDiarios}</CustomText>
       </TouchableOpacity>
 
       <View style={styles.meusMomentos}>
         <View>
-            <CustomText style={styles.meusMomentosTit}>momentos diários</CustomText>
+            <CustomText style={styles.meusMomentosTit}>{locale.momentosDiariosMin}</CustomText>
         </View>
         {myMoments ? myMoments.map((mom, index)=>(
             <View key={index}>
                 <CustomText style={estilos.texto}>{mom.moment}</CustomText>
             </View>
         )) : <CustomText style={estilos.texto}>
-                Não há momentos específicos definidos.{'\n'}
-                Você pode criar um registro livre ou{'\n'}determinar os seus momentos diários{'\n'}de registro.
+                {locale.naoHaMomentos1}.{'\n'}{locale.naoHaMomentos2}{'\n'}{locale.naoHaMomentos3}.
             </CustomText>}
       </View>
 
       <TouchableOpacity onPress={()=>{navigation.navigate('Register')}} style={[estilos.botao, styles.novoRegistroBt]}>
         <AutoHeightImage source={novoRegistroIco} width={30} />
-        <CustomText style={{color: '#ffffff', fontSize: 20}}>criar um novo registro</CustomText>
+        <CustomText style={{color: '#ffffff', fontSize: 20}}>{locale.novoRegistro}</CustomText>
       </TouchableOpacity>
 
     </View>
@@ -112,7 +113,7 @@ const styles = StyleSheet.create({
         paddingVertical: 20,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
     },
     novoRegistroBt: {
         backgroundColor: '#006808', 
@@ -123,7 +124,7 @@ const styles = StyleSheet.create({
         borderRadius: 18,
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'space-evenly',
     },
     lastValue: {
         backgroundColor: '#e9e9e9',
