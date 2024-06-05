@@ -26,9 +26,9 @@ const AllRegistries = () => {
         <CustomText style={estilos.title}>{locale.todosRegistros}</CustomText>
         <View style={{marginVertical: 20, alignItems: 'flex-start'}}></View>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 40}]}></CustomText>
-                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 150}]}>{locale.dataehora}</CustomText>
-                    <CustomText style={[styles.item, {width: 140, borderTopWidth:0}]}>{locale.momento}</CustomText>
+                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 35}]}></CustomText>
+                    <CustomText style={[styles.item, {borderTopWidth: 0, width: 130}]}>{locale.dataehora}</CustomText>
+                    <CustomText style={[styles.item, {width: 135, borderTopWidth:0}]}>{locale.momento}</CustomText>
                     <CustomText style={[styles.item, {borderTopWidth:0}]}>mg/dL</CustomText>
                 </View>
         {registries ?
@@ -36,7 +36,7 @@ const AllRegistries = () => {
                 <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} key={index}>
                     <CustomText style={[styles.item, {borderTopWidth: index === 0 ? 0 : 1}]}>{index+1}</CustomText>
                     <CustomText style={[styles.item, {borderTopWidth: index === 0 ? 0 : 1}]}>{moment(reg.date).format('DD/MM/YY - HH:mm')}</CustomText>
-                    <CustomText style={[styles.item, {width: 170, borderTopWidth: index === 0 ? 0 : 1}]}>{reg.moment}</CustomText>
+                    <CustomText style={[styles.item, {width: 150, borderTopWidth: index === 0 ? 0 : 1}]}>{reg.moment}</CustomText>
                     <CustomText style={[styles.item, {borderTopWidth: index === 0 ? 0 : 1}]}>{reg.value}</CustomText>
                 </View>
             ))
