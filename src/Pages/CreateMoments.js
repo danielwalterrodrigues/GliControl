@@ -63,7 +63,7 @@ const CreateMoments = () => {
             onChangeText={newName => setMomentName(newName)}
             //onEndEditing={() => setShowLogin(true)}
             style={estilos.input}
-            placeholder={locale.MomentoPlaceholder}
+            placeholder={locale.labelCreateMoment}
             placeholderTextColor="#000000"
             />
         <TouchableOpacity style={estilos.botao} onPress={()=>{AddMoment()}}>
@@ -76,7 +76,7 @@ const CreateMoments = () => {
                         {moment.moment}
                     </CustomText>
                     {index === 0 ? null :
-                        <TouchableOpacity onPress={()=>{deletedByIndex(index)}}>
+                        <TouchableOpacity onPress={()=>{deletedByIndex(index)}} accessible={true} accessibilityLabel={'Delete '+moment.moment}>
                             <CustomText style={{color: '#ffffff'}}> X</CustomText>
                         </TouchableOpacity>
                     }

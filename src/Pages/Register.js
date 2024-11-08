@@ -87,6 +87,8 @@ const Register = () => {
   minimumTrackTintColor="#cc0000"
   maximumTrackTintColor="#700100"
   onValueChange={newMgdL => setMgdL(newMgdL)}
+  accessible={true}
+  accessibilityLabel={'Hold me!'}
 />
 
         <TouchableOpacity style={[estilos.botao, {marginTop: 80}]} onPress={()=>{SaveRegister(), setSave(true)}}>

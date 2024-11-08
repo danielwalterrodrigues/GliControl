@@ -26,7 +26,7 @@ export const estilos = StyleSheet.create({
         borderColor: '#cc0101',
         borderRadius: 9,
         paddingHorizontal: 15,
-        paddingVertical: 10,
+        paddingVertical: 15,
         backgroundColor: '#7c0000',
         marginVertical: 5,
         width: windowWidth-80,

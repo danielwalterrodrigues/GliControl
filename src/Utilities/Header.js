@@ -54,8 +54,8 @@ const Header = () => {
       <View>
         <UploadPhoto />
       </View>
-      <View style={{alignItems: 'flex-end', marginTop: 20}}>
-        <TouchableOpacity onPress={()=>{setShowMenu(!showMenu)}}>
+      <View style={{alignItems: 'flex-end'}}>
+        <TouchableOpacity onPress={()=>{setShowMenu(!showMenu)}} style={{paddingLeft: 30, paddingRight: 5, paddingTop: 20}} >
           <AutoHeightImage source={hamburger} width={20} />
         </TouchableOpacity>
         <CustomText style={{color: '#ffffff', textAlign: 'right', marginTop: 10, width: 180}}>
@@ -64,22 +64,22 @@ const Header = () => {
       </View>
       {showMenu ?
         <Animated.View entering={SlideInLeft} exiting={SlideOutLeft} style={styles.barraLateral}>
-          <TouchableOpacity onPress={()=>{setShowMenu(false)}} style={{alignItems: 'flex-end'}}>
+          <TouchableOpacity onPress={()=>{setShowMenu(false)}} style={{alignItems: 'flex-end', paddingLeft: 30, paddingBottom: 20}}>
             <AutoHeightImage source={back} width={30} />
           </TouchableOpacity>
           <UploadPhoto />
           <CustomText style={{textAlign: 'center', color: '#ffffff'}}>{userData.name}</CustomText>
           <View style={{marginTop: 50}}>
-            <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Dashboard')}}>
+            <TouchableOpacity accessible={true} accessibilityLabel='Home' style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Dashboard')}}>
               <CustomText style={{color: '#ffffff'}}>{locale.principal}</CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('CreateMoments')}}>
+            <TouchableOpacity accessible={true} accessibilityLabel='Criar momentos diários' style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('CreateMoments')}}>
               <CustomText style={{color: '#ffffff'}}>{locale.momentosDiarios}</CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Register')}}>
+            <TouchableOpacity accessible={true} accessibilityLabel='Novo registro' style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('Register')}}>
               <CustomText style={{color: '#ffffff'}}>{locale.novoRegistro}</CustomText>
             </TouchableOpacity>
-            <TouchableOpacity style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('AllRegistries')}}>
+            <TouchableOpacity accessible={true} accessibilityLabel='Todos os registros' style={[estilos.botao, styles.botao]} onPress={()=>{setShowMenu(false), navigation.navigate('AllRegistries')}}>
               <CustomText style={{color: '#ffffff'}}>{locale.todosRegistros}</CustomText>
             </TouchableOpacity>
             {dev ?
@@ -119,13 +119,13 @@ const styles = StyleSheet.create({
       position: 'absolute',
       zIndex: 225,
       backgroundColor: '#700700',
-      width: windowWidth-50,
+      width: windowWidth-70,
       height: windowHeight,
       left: -20,
       top: 0,
       borderRightWidth: 6,
       borderRightColor: '#e50e00',
-      padding: 40
+      padding: 30
     },
     barraBgLateral: {
       position: 'absolute',

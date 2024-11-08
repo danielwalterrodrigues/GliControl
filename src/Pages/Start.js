@@ -44,7 +44,7 @@ const Start = () => {
         if(name){
         setUserData({...userData, name: name})
         navigation.navigate('Dashboard')
-        setSystemData({...systemData, erro: locale.bemvindo, erroType: 'success', erroBox: 'dialog', erroMsg: locale.bemVindo})
+        //setSystemData({...systemData, erro: locale.bemvindo, erroType: 'success', erroBox: 'dialog', erroMsg: locale.bemVindo})
         } else {
             setSystemData({...systemData, erro: locale.aviso, erroType: 'danger', erroMsg: locale.erroNome})
         }
@@ -89,7 +89,7 @@ const Start = () => {
         </View>
         <View style={{flexDirection: 'row', width: windowWidth, alignItems: 'center', justifyContent: 'center', marginTop: 40}}>
             
-            <TouchableOpacity onPress={()=>{DefineLocale('enUs')}} style={{width: (windowWidth/3), alignItems: 'flex-end'}}><CustomText style={{color: '#ffffff'}}>English </CustomText></TouchableOpacity>
+            <TouchableOpacity accessible={true} accessibilityLabel='English / Português' onPress={()=>{DefineLocale('enUs')}} style={{width: (windowWidth/3), alignItems: 'flex-end'}}><CustomText style={{color: '#ffffff'}}>English </CustomText></TouchableOpacity>
             <AutoHeightImage source={userData.locale === 'ptBr' ? switchPt : switchEn} width={40} style={{marginHorizontal: 20}} />
             <TouchableOpacity onPress={()=>{DefineLocale('ptBr')}} style={{width: (windowWidth/3)}}><CustomText style={{color: '#ffffff'}}> Português</CustomText></TouchableOpacity>
         </View>

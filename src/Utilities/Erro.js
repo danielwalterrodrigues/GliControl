@@ -4,10 +4,12 @@ import SystemProfile from "../Contexts/SystemContext"
 import { windowWidth, windowHeight } from './Dimensions'
 import { estilos } from './Estilos'
 import Animated, {SlideInUp, SlideOutUp} from 'react-native-reanimated'
+import LocaleProfile from '../Contexts/LocaleContext'
 
 const Erro = () => {
     const [systemData, setSystemData] = useContext(SystemProfile)
     const [showErro, setShowErro] = useState(false)
+    const [locale, setLocale] = useContext(LocaleProfile)
     const erro = systemData?.erro
     const erroType = systemData?.type
 
@@ -19,7 +21,7 @@ const Erro = () => {
     }, [erro])
 
     return(
-        <>
+        <View>
         {showErro ? 
             <Animated.View entering={SlideInUp} exiting={SlideOutUp} style={[styles.container, {backgroundColor:
                 (() => {
@@ -38,7 +40,7 @@ const Erro = () => {
                 </View>
             </Animated.View>
         : null}
-        </>
+        </View>
     )
 }
 const styles = StyleSheet.create({
