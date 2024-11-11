@@ -26,8 +26,9 @@ const Dashboard = () => {
 
   return (
     <View style={estilos.container}>
-        
-        <Header />
+        <View style={{zIndex: 999}}>
+            <Header />
+        </View>
     {registers ?
     <>
         <View style={[styles.ultimaMedicao]}>

@@ -28,11 +28,6 @@ const Header = () => {
     const [dev, setDev] = useState(false)
     const [switchLocale, setSwitchLocale] = useState()
 
-    useEffect(()=>{
-      if (__DEV__) {
-          setDev(true)
-      }
-    }, [])
 
     function CleanData() {
       setUserData([])
@@ -117,7 +112,7 @@ const styles = StyleSheet.create({
     },
     barraLateral: {
       position: 'absolute',
-      zIndex: 225,
+      zIndex: 999,
       backgroundColor: '#700700',
       width: windowWidth-70,
       height: windowHeight,
