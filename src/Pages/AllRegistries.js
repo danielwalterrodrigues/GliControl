@@ -22,7 +22,9 @@ const AllRegistries = () => {
     
     <View style={estilos.container}>
         
-        <Header />
+        <View style={{zIndex: 999}}>
+            <Header />
+        </View>
         <CustomText style={estilos.title}>{locale.todosRegistros}</CustomText>
         <View style={{marginVertical: 20, alignItems: 'flex-start'}}></View>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>

@@ -16,6 +16,7 @@ import CustomText from './src/Utilities/CustomText';
 import { ALERT_TYPE, Dialog, AlertNotificationRoot, Toast } from 'react-native-alert-notification';
 import ToastAll from './src/Utilities/Toast';
 import { ptBr, enUs } from './src/Utilities/Locale';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 export default function App() {
   const [userData, setUserData] = useState([])
@@ -30,22 +31,26 @@ export default function App() {
     return null;
   }
 
+
+
   return (
-    <NavigationContainer>
-      <AlertNotificationRoot theme='dark'>
-      <SystemProfile.Provider value={[systemData, setSystemData]}>
-      <LocaleProfile.Provider value={[locale, setLocale]}>
-        <UserProfile.Provider value={[userData, setUserData]}>
-            <ImageBackground source={bg} resizeMethod='auto' resizeMode='stretch' style={styles.image}>
-              <AppRoutes />
-              <Modal />
-              <ToastAll />
-            </ImageBackground>
-          </UserProfile.Provider>
-        </LocaleProfile.Provider>
-      </SystemProfile.Provider>
-      </AlertNotificationRoot>
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <AlertNotificationRoot theme='dark'>
+        <SystemProfile.Provider value={[systemData, setSystemData]}>
+        <LocaleProfile.Provider value={[locale, setLocale]}>
+          <UserProfile.Provider value={[userData, setUserData]}>
+              <ImageBackground source={bg} resizeMethod='auto' resizeMode='stretch' style={styles.image}>
+                <AppRoutes />
+                <Modal />
+                <ToastAll />
+              </ImageBackground>
+            </UserProfile.Provider>
+          </LocaleProfile.Provider>
+        </SystemProfile.Provider>
+        </AlertNotificationRoot>
+      </NavigationContainer>
+    </GestureHandlerRootView>
     
   );
 }

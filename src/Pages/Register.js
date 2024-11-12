@@ -51,7 +51,9 @@ const Register = () => {
 
   return (
     <View style={estilos.container}>
-        <Header />
+        <View style={{zIndex: 999}}>
+            <Header />
+        </View>
         <CustomText style={[estilos.title, {fontSize: 25}]}>{locale.titRegistro}</CustomText>
         <CustomText style={[estilos.texto, {marginTop: 30}]}>
             {locale.escolhaMomento}.
@@ -74,24 +76,26 @@ const Register = () => {
 
         <>
         <CustomText style={{textAlign: 'center'}}>{locale.momentoSelecionado}:{'\n'}<Text style={{color: '#cc0000', fontSize: 20}}>{selected}</Text></CustomText>
-        <CustomText style={{fontSize: 50, color: '#6d0000', marginVertical: 30}}>{mgdL}</CustomText>
+        <CustomText style={{fontSize: 50, color: '#6d0000', marginVertical: 20}}>{mgdL}</CustomText>
         
         
         <Slider
-  style={{width: 300}}
-  minimumValue={80}
-  maximumValue={280}
-  value={mgdL}
-  step={1}
-  thumbTintColor={'#000000'}
-  minimumTrackTintColor="#cc0000"
-  maximumTrackTintColor="#700100"
-  onValueChange={newMgdL => setMgdL(newMgdL)}
-  accessible={true}
-  accessibilityLabel={'Hold me!'}
-/>
+            style={{width: 300, padding: 30, marginLeft: -60}}
+            minimumValue={80}
+            maximumValue={380}
+            value={mgdL}
+            step={1}
+            thumbTintColor={'#000000'}
+            minimumTrackTintColor="#cc0000"
+            maximumTrackTintColor="#700100"
+            onValueChange={newMgdL => setMgdL(newMgdL)}
+            accessible={true}
+            accessibilityLabel={'Hold me!'}
+            padding={100}
+            tapToSeek={true}
+        />
 
-        <TouchableOpacity style={[estilos.botao, {marginTop: 80}]} onPress={()=>{SaveRegister(), setSave(true)}}>
+        <TouchableOpacity style={[estilos.botao, {marginTop: 60}]} onPress={()=>{SaveRegister(), setSave(true)}}>
             <CustomText style={{color: '#ffffff'}}>{locale.salvarRegistro}</CustomText>
         </TouchableOpacity>
         </>

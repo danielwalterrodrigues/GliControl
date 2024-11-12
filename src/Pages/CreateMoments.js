@@ -51,8 +51,9 @@ const CreateMoments = () => {
   return (
     
     <View style={estilos.container}>
-        
-        <Header />
+        <View style={{zIndex: 999}}>
+            <Header />
+        </View>
         <CustomText style={estilos.title}>{locale.meusMomentosRegistro}</CustomText>
         <CustomText style={[estilos.texto, {marginVertical: 20
         }]}>{locale.momentosExplica}.</CustomText>
